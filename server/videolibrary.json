@@ -1,0 +1,11 @@
+{
+  "videos":
+  [
+    {"url":"url1", "time":"stamp1", "path":"path1", "isSelect": false, "color": ""},
+    {"url":"url2", "time":"stamp2", "path":"path2", "isSelect": false, "color": ""},
+    {"url":"url3", "time":"stamp3", "path":"path3", "isSelect": false, "color": ""},
+    {"url":"url4", "time":"stamp4", "path":"path4", "isSelect": false, "color": ""},
+    {"url":"url5", "time":"stamp5", "path":"path5", "isSelect": false, "color": ""},
+    {"url":"url6", "time":"stamp6", "path":"path6", "isSelect": false, "color": ""}
+  ]
+}

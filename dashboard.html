@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+  <base href="/dashboard/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+    <!-- Libraries -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Stylesheet -->
+  </head>
+  <body class="container">
+    <div class= "well row fluid-container">
+          <a href="/" class = "align-center">Home</a>
+          <a class="" href="/">Fidiyo</a>
+          <div  class="btn-group pull-right">
+                <button class="btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">
+                  saint of killers
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="/users/edit">Profile</a></li>
+                  <li><a rel="nofollow" data-method="delete" href="/users/sign_out">Log out</a></li>
+                </ul>
+              </li>
+        </div>
+    </div>
+
+
+
+    <div class="fluid-container">
+      <script src="resources/systemjs.config.js"></script>
+        <section>
+          <view></view>
+        </section>
+        <script>
+          System.import('main.js')
+                .then(null, console.error.bind(console));
+        </script>
+    </div>
+
+
+    <div class="container">
+      <h1></h1>
+<!--use for single page js files that are precompiled. will load them into head. if use yield :head -->
+
+
+    </div>
+  </body>
+</html>
