@@ -19,12 +19,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Stylesheet -->
   </head>
-  <body class="container">
-    <div class= "well row fluid-container">
-          <a href="/" class = "align-center">Home</a>
-          <a class="" href="/">Fidiyo</a>
-          <div  class="btn-group pull-right">
-                <button class="btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">
+  <body class="fluid-container" style = "height: 100%; min-height: 480px; position: relative;">
+    <div class= " container">
+      <div class = "well row">
+          <div class = "col-xs-2 center">
+            <button href="/" class = "btn-sm btn-primary"><span class="glyphicon glyphicon-home"> Fidiyo</button>
+          </div>
+          <div class = "col-xs-1 col-xs-offset-3 "><img src = "bmo/cr.png" height="40px" width="90px"></div>
+          <div  class="col-xs-2 col-xs-offset-4 btn-group center">
+                <button class="btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
                   saint of killers
                   <span class="caret"></span>
                 </button>
@@ -33,15 +36,15 @@
                   <li><a rel="nofollow" data-method="delete" href="/users/sign_out">Log out</a></li>
                 </ul>
               </li>
-        </div>
+            </div>
+      </div>
     </div>
 
 
-
-    <div class="fluid-container">
-      <script src="resources/systemjs.config.js"></script>
+      <div class = "">
+        <script src="resources/systemjs.config.js"></script>
         <section>
-          <view></view>
+          <view profilepic = "upload/17b01814f11323b70ab18c7fd9539926.webp"></view>
         </section>
         <script>
           System.import('main.js')

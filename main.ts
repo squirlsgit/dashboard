@@ -1,4 +1,4 @@
-import {Component, NgModule,TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, NgModule,TemplateRef, ViewChild, ViewContainerRef} from '@angular/core'; //input and output might be extrenuos i plan to do some even listening however.
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators, AbstractControl }   from '@angular/forms';
@@ -92,9 +92,9 @@ loadScript(name: string, attempt: boolean, index: number) {
   <div id='container'>
     <h1>powered by fidiyo</h1>
     <video muted id='gum' autoplay hidden></video>
-    <video  id='recorded' autoplay loop hidden></video>
+    <video  id='recorded' autoplay loop hidden ></video>
     <canvas id='canvas' style='display:none;'></canvas>
-    <img id = 'captured' src =''>
+    <img id = 'captured' src ='' >
     <div>
       <button id='record' disabled>Start Recording</button>
       <button id='capture' disabled>Take a Picture</button>
@@ -120,6 +120,7 @@ export class record {
   constructor( public http: Http, public script: ScriptService, private vcRef: ViewContainerRef, private router: Router) {
     this.refresh_switch = true;
     this.status = 'record';
+
   }
   ngOnInit(){
    this.vcRef.clear();
@@ -172,10 +173,17 @@ export class record {
 </template>
 <!-- Home Screen Record Browse Admin -->
 <template #home>
-<button id = "Browse" (click) = "browseLibrary()" class = "btn-primary btn-sm">
-<span class="glyphicon glyphicon-envelope"> </span></button> <!--Browse Video Library -->
-<button id = "Record" (click) = "startRecording()">Record</button>
-<button id = "Reset" (click)="logout()">Logout</button>
+<img [src] = "profilepic" height = "190" width = "250" class = "center-block img-rounded">
+<p class = "  text-center"><span class="glyphicon glyphicon-envelope"></span> Send an existing file. </p>
+<p class = " text-center"><span class=" 	glyphicon glyphicon-camera"></span> Take a video/picture</p>
+<div class = "fluid-container" style = " position: absolute; bottom:0px; width: 100%;">
+<div class = "nav navbar-inverse container">
+<ul class = "nav navbar-nav"><li><a id = "Browse" (click) = "browseLibrary()" class = "">
+<span class="glyphicon glyphicon-envelope"></span> Send Video</a></li></ul> <!--Browse Video Library -->
+<ul class = "nav navbar-nav pull-right"><li><a id = "Record" (click) = "startRecording()"> <span class=" 	glyphicon glyphicon-camera"></span> Record</a></li>
+</ul>
+</div>
+</div>
 </template>
 
 <template #send>
@@ -192,14 +200,18 @@ export class record {
    videos: Array<any>;
    videostoSend: Array<any>;
    refresh_switch: boolean;
+   profilepic: string;
+
    constructor( public http: Http, private vcRef: ViewContainerRef, private router: Router) {
      this.refresh_switch = true;
      this.videos = [];
      this.videostoSend = [];
+     this.profilepic = document.querySelector('view').getAttribute('profilepic'); //will not take information from the templated page unless forced.
    }
    ngOnInit(){
     this.vcRef.clear();
     this.vcRef.createEmbeddedView(this.displayHome);
+
    }
    startRecording(){
      this.router.navigate(['/record']);
@@ -251,6 +263,7 @@ display() {
     }
  }
 
+
  @Component({
 
    template: '<h2>Page not found</h2>'
@@ -268,14 +281,18 @@ display() {
  selector: 'view',
  template: `<!--<dashboard></dashboard>
  <record></record>-->
- <router-outlet></router-outlet>
+
+ <router-outlet ></router-outlet>
  `
 
  })
  export class hub {
-   constructor(){
+
+   constructor(){  }
+   ngOnInit(){
 
    }
+
  }
 
 

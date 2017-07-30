@@ -160,7 +160,7 @@ System.register(['@angular/core', '@angular/platform-browser', "@angular/platfor
                     core_1.Component({
                         providers: [ScriptService],
                         selector: 'record',
-                        template: "\n <template #record>\n <div id = \"dashboard\" *ngIf = 'refresh_switch' >\n <button id='exit' (click)=\"toHome()\" >Exit</button>\n  <div id='main' align='center' >\n  <div id='container'>\n    <h1>powered by fidiyo</h1>\n    <video muted id='gum' autoplay hidden></video>\n    <video  id='recorded' autoplay loop hidden></video>\n    <canvas id='canvas' style='display:none;'></canvas>\n    <img id = 'captured' src =''>\n    <div>\n      <button id='record' disabled>Start Recording</button>\n      <button id='capture' disabled>Take a Picture</button>\n      <button id='play' disabled>Review</button>\n      <button id='download' disabled>Save file</button>\n      <button id='saveimg' disabled>Save Image</button>\n      <button id='send' disabled>Send file</button>\n    </div>\n  </div>\n  </div>\n  </div>\n </template>\n\n <template #send>\n </template>\n"
+                        template: "\n <template #record>\n <div id = \"dashboard\" *ngIf = 'refresh_switch' >\n <button id='exit' (click)=\"toHome()\" >Exit</button>\n  <div id='main' align='center' >\n  <div id='container'>\n    <h1>powered by fidiyo</h1>\n    <video muted id='gum' autoplay hidden></video>\n    <video  id='recorded' autoplay loop hidden ></video>\n    <canvas id='canvas' style='display:none;'></canvas>\n    <img id = 'captured' src ='' >\n    <div>\n      <button id='record' disabled>Start Recording</button>\n      <button id='capture' disabled>Take a Picture</button>\n      <button id='play' disabled>Review</button>\n      <button id='download' disabled>Save file</button>\n      <button id='saveimg' disabled>Save Image</button>\n      <button id='send' disabled>Send file</button>\n    </div>\n  </div>\n  </div>\n  </div>\n </template>\n\n <template #send>\n </template>\n"
                     }), 
                     __metadata('design:paramtypes', [http_1.Http, ScriptService, core_1.ViewContainerRef, router_1.Router])
                 ], record);
@@ -176,6 +176,7 @@ System.register(['@angular/core', '@angular/platform-browser', "@angular/platfor
                     this.refresh_switch = true;
                     this.videos = [];
                     this.videostoSend = [];
+                    this.profilepic = document.querySelector('view').getAttribute('profilepic'); //will not take information from the templated page unless forced.
                 }
                 dashboard.prototype.ngOnInit = function () {
                     this.vcRef.clear();
@@ -248,7 +249,7 @@ System.register(['@angular/core', '@angular/platform-browser', "@angular/platfor
                 dashboard = __decorate([
                     core_1.Component({
                         selector: 'dashboard',
-                        template: "\n<template #library>\n<button (click)=\"toHome()\"> back </button>\n<table>\n  <tr *ngFor=\"let video of videos\"  >\n    <button (click)=\"toggleselect(video)\" [style.background-color] = \"video.color\" ><td >Video: {{ video.url }}</td> <td> {{ video.path }} </td> <td> {{video.time}}</td></button>\n  </tr>\n</table>\n<button (click)=\"sendVideos()\">send</button>\n</template>\n<!-- Home Screen Record Browse Admin -->\n<template #home>\n<button id = \"Browse\" (click) = \"browseLibrary()\" class = \"btn-primary btn-sm\">\n<span class=\"glyphicon glyphicon-envelope\"> </span></button> <!--Browse Video Library -->\n<button id = \"Record\" (click) = \"startRecording()\">Record</button>\n<button id = \"Reset\" (click)=\"logout()\">Logout</button>\n</template>\n\n<template #send>\n</template>\n "
+                        template: "\n<template #library>\n<button (click)=\"toHome()\"> back </button>\n<table>\n  <tr *ngFor=\"let video of videos\"  >\n    <button (click)=\"toggleselect(video)\" [style.background-color] = \"video.color\" ><td >Video: {{ video.url }}</td> <td> {{ video.path }} </td> <td> {{video.time}}</td></button>\n  </tr>\n</table>\n<button (click)=\"sendVideos()\">send</button>\n</template>\n<!-- Home Screen Record Browse Admin -->\n<template #home>\n<img [src] = \"profilepic\" height = \"190\" width = \"250\" class = \"center-block img-rounded\">\n<p class = \"  text-center\"><span class=\"glyphicon glyphicon-envelope\"></span> Send an existing file. </p>\n<p class = \" text-center\"><span class=\" \tglyphicon glyphicon-camera\"></span> Take a video/picture</p>\n<div class = \"fluid-container\" style = \" position: absolute; bottom:0px; width: 100%;\">\n<div class = \"nav navbar-inverse container\">\n<ul class = \"nav navbar-nav\"><li><a id = \"Browse\" (click) = \"browseLibrary()\" class = \"\">\n<span class=\"glyphicon glyphicon-envelope\"></span> Send Video</a></li></ul> <!--Browse Video Library -->\n<ul class = \"nav navbar-nav pull-right\"><li><a id = \"Record\" (click) = \"startRecording()\"> <span class=\" \tglyphicon glyphicon-camera\"></span> Record</a></li>\n</ul>\n</div>\n</div>\n</template>\n\n<template #send>\n</template>\n "
                     }), 
                     __metadata('design:paramtypes', [http_1.Http, core_1.ViewContainerRef, router_1.Router])
                 ], dashboard);
@@ -275,10 +276,12 @@ System.register(['@angular/core', '@angular/platform-browser', "@angular/platfor
             hub = (function () {
                 function hub() {
                 }
+                hub.prototype.ngOnInit = function () {
+                };
                 hub = __decorate([
                     core_1.Component({
                         selector: 'view',
-                        template: "<!--<dashboard></dashboard>\n <record></record>-->\n <router-outlet></router-outlet>\n "
+                        template: "<!--<dashboard></dashboard>\n <record></record>-->\n\n <router-outlet ></router-outlet>\n "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], hub);
