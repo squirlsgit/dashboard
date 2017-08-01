@@ -23,25 +23,23 @@
     <div class= " container">
       <div class = "well row">
           <div class = "col-xs-2 center">
-            <button href="/" class = "btn-sm btn-primary"><span class="glyphicon glyphicon-home"> Fidiyo</button>
+            <button href="/" class = "btn-sm btn-primary"><span class="glyphicon glyphicon-home" /> Fidiyo</button>
           </div>
-          <div class = "col-xs-1 col-xs-offset-3 "><img src = "bmo/cr.png" height="40px" width="90px"></div>
+          <div class = "col-xs-1 col-xs-offset-3 " ><img src = "bmo/cr.png" height="40px" width="90px"></div>
           <div  class="col-xs-2 col-xs-offset-4 btn-group center">
                 <button class="btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
-                  saint of killers
+                  <span class="glyphicon glyphicon-user"></span> saint of killers
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
                   <li><a href="/users/edit">Profile</a></li>
                   <li><a rel="nofollow" data-method="delete" href="/users/sign_out">Log out</a></li>
                 </ul>
-              </li>
+             
             </div>
       </div>
     </div>
 
-
-      <div class = "">
         <script src="resources/systemjs.config.js"></script>
         <section>
           <view profilepic = "upload/17b01814f11323b70ab18c7fd9539926.webp"></view>
@@ -50,14 +48,6 @@
           System.import('main.js')
                 .then(null, console.error.bind(console));
         </script>
-    </div>
 
-
-    <div class="container">
-      <h1></h1>
-<!--use for single page js files that are precompiled. will load them into head. if use yield :head -->
-
-
-    </div>
   </body>
 </html>

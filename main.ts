@@ -86,26 +86,36 @@ loadScript(name: string, attempt: boolean, index: number) {
  selector: 'record',
  template: `
  <template #record>
- <div id = "dashboard" *ngIf = 'refresh_switch' >
- <button id='exit' (click)="toHome()" >Exit</button>
-  <div id='main' align='center' >
-  <div id='container'>
-    <h1>powered by fidiyo</h1>
-    <video muted id='gum' autoplay hidden></video>
-    <video  id='recorded' autoplay loop hidden ></video>
-    <canvas id='canvas' style='display:none;'></canvas>
-    <img id = 'captured' src ='' >
-    <div>
-      <button id='record' disabled>Start Recording</button>
-      <button id='capture' disabled>Take a Picture</button>
-      <button id='play' disabled>Review</button>
-      <button id='download' disabled>Save file</button>
-      <button id='saveimg' disabled>Save Image</button>
-      <button id='send' disabled>Send file</button>
+  <div class = "container" id='container'>
+ <button class = "btn btn-primary" id='exit' (click)="toHome()" >Exit</button>
+    <h1 class = "text-center">powered by fidiyo</h1>
+    <video class = "center-block"   id='gum' autoplay ></video>
+    <video class = "center-block" style="display:none;" id='recorded'   ></video>
+    <canvas class = "center-block"  style="display:none;" id='canvas'></canvas>
+    <img class = "center-block"  style="display:none;" id = 'captured' src ='' >
+    <progress id="videostream" hidden></progress>
+<div style="margin-top:1%; min-margin-top:10px;">
+<div class = "nav navbar-inverse" style="border-radius:3px; postion: relative;">
+
+  <div class="btn-group " style="max-margin-left:5px; margin-left:1em;">
+      <button #recordButton (click) = "toggleselect(recordButton)" class = "btn btn-primary navbar-btn" id='record' disabled><span class="glyphicon glyphicon-facetime-video"></span> Start Recording</button>
+      <button class = "btn btn-primary navbar-btn" id='capture' disabled><span class="glyphicon glyphicon-camera"></span> Take a Picture</button>
+  </div>
+  <div class="btn-group mx-auto" style="position:absolute;
+    left: 50%;
+    transform: translateX(-50%);">
+  <button #playButton class = "btn btn-primary navbar-btn" id='play' disabled><span class="glyphicon glyphicon-play-circle"></span> Play</button>
+  <button #flipButton class = "btn btn-primary navbar-btn" id='flip'> <span class="glyphicon glyphicon-refresh"></span> </button>
+  <button #pauseButton class = "btn btn-primary navbar-btn" id='pause' disabled><span class="glyphicon glyphicon-pause"></span> Pause</button>
+</div>
+      <div class = "btn-group pull-right"  style="max-margin-right:5px; margin-right:1em;">
+      <button  class = "btn btn-primary navbar-btn" id='download' disabled><span class="glyphicon glyphicon-download-alt"></span> Save Video</button>
+      <button  class = "btn btn-primary navbar-btn " id='saveimg' disabled><span class="glyphicon glyphicon-download-alt"></span> Save Image</button>
+      <button  class = "btn btn-primary navbar-btn" id='send' disabled><span class="glyphicon glyphicon-upload"></span> Send file</button>
+      </div>
+      </div>
     </div>
-  </div>
-  </div>
-  </div>
+    </div>
  </template>
 
  <template #send>
@@ -156,6 +166,17 @@ export class record {
   toHome(){
     this.router.navigate(['/dashboard']);
   }
+  toggleselect(domElement: any){
+    if(domElement.classList.contains('btn-primary')){
+      domElement.classList.remove('btn-primary');
+      domElement.classList.add('btn-danger');
+    }
+    else if(domElement.classList.contains('btn-danger')){
+      domElement.classList.remove('btn-danger');
+      domElement.classList.add('btn-primary');
+    }
+
+  }
 }
 
 
@@ -178,9 +199,9 @@ export class record {
 <p class = " text-center"><span class=" 	glyphicon glyphicon-camera"></span> Take a video/picture</p>
 <div class = "fluid-container" style = " position: absolute; bottom:0px; width: 100%;">
 <div class = "nav navbar-inverse container">
-<ul class = "nav navbar-nav"><li><a id = "Browse" (click) = "browseLibrary()" class = "">
+<ul class = "nav navbar-nav"><li><a id = "Browse" (click) = "browseLibrary()" style="cursor: pointer;">
 <span class="glyphicon glyphicon-envelope"></span> Send Video</a></li></ul> <!--Browse Video Library -->
-<ul class = "nav navbar-nav pull-right"><li><a id = "Record" (click) = "startRecording()"> <span class=" 	glyphicon glyphicon-camera"></span> Record</a></li>
+<ul class = "nav navbar-nav pull-right"><li><a id = "Record" (click) = "startRecording()" style="cursor: pointer;"> <span class=" 	glyphicon glyphicon-camera"></span> Record</a></li>
 </ul>
 </div>
 </div>
